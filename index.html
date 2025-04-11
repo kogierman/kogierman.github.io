@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Design Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Satoshi:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700&family=Funnel+Sans:wght@300;400;500&display=swap');
+
+        :root {
+            --font-display: 'Funnel Display', sans-serif;
+            --font-body: 'Funnel Sans', sans-serif;
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-cards: #0D0D0D;
+            --bg-content: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --accent-primary: #3B82F6;
+            --accent-light: #60A5FA;
+            --accent-dark: #2563EB;
+            --font-heading: 'Syne', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .experience-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .experience-description {
+            font-weight: 300;
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .skill-tag {
+            font-weight: 400;
+        }
+
+        .skill-tag.expert {
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        section:not(:last-child) {
+            margin-bottom: 0;
+            padding-bottom: 5rem;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: calc(100% + 4rem);
+            background: linear-gradient(
+                to right,
+                var(--bg-primary) 0%,
+                var(--bg-primary) 25%,
+                var(--bg-content) 25%,
+                var(--bg-content) 75%,
+                var(--bg-primary) 75%,
+                var(--bg-primary) 100%
+            );
+            z-index: -1;
+        }
+
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .about::after {
+            content: '';
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-primary), transparent);
+            opacity: 0.6;
+        }
+
+        .about-content h1 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-content h2 {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .photo-placeholder {
+            width: 300px;
+            height: 300px;
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Experience Section */
+        section h2 {
+            margin-bottom: 3rem;
+        }
+
+        .experience-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .experience-item {
+            background-color: var(--bg-cards);
+            padding: 2rem;
+            border-radius: 1rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item::before {
+            display: none;
+        }
+
+        .experience-item:not(:first-child) {
+            max-width: none;
+            margin: 0;
+        }
+
+        .subsequent-experience {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-content {
+            grid-column: 1;
+        }
+
+        .experience-logo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--bg-secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .experience-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .experience-item h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-item .tech {
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-item li::before {
+            content: '•';
+            color: var(--accent-primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            margin-bottom: 3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.5rem;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .skill-tag.expert {
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--accent-dark);
+            opacity: 0.9;
+            min-height: 2.8rem;
+        }
+
+        .skill-tag.advanced {
+            font-size: 1rem;
+            opacity: 0.8;
+            min-height: 2.6rem;
+        }
+
+        .skill-tag.intermediate {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            min-height: 2.4rem;
+        }
+
+        /* Add separator to other sections */
+        section:not(.about):not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-primary), transparent);
+            opacity: 0.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Add footer styles */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0.7;
+            letter-spacing: 0.02em;
+        }
+
+        footer span {
+            color: var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-content">
+                <h1>Krystian Ogierman</h1>
+                <h2>Software Engineer</h2>
+                <p>Backend engineer specializing in distributed systems and cloud infrastructure. Focused on building scalable, reliable, and efficient backend solutions that power modern applications.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/krystian-ogierman/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/kogierman" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="photo-placeholder">
+                <img src="myphoto.jpeg" alt="Krystian Ogierman">
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section>
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3>Senior Software Engineer</h3>
+                        <p class="tech">Golang</p>
+                        <p class="date">ProcessOut (acquired by Checkout.com) | 06.2022 – Present</p>
+                        <ul>
+                            <li>Developed services for card data storage and payments processing in a highly regulated environment</li>
+                            <li>Integrated APIs of multiple payment gateways</li>
+                            <li>Acted as technical mentor, mentoring junior members and setting technical direction</li>
+                            <li>Member of Architecture Council, reviewing architectural decisions and designs</li>
+                        </ul>
+                    </div>
+                    <div class="experience-logo">
+                        <img src="processout_logo.jpeg" alt="ProcessOut logo">
+                    </div>
+                </div>
+                <div class="subsequent-experience">
+                    <div class="experience-item">
+                        <div class="experience-content">
+                            <h3>Senior Backend Developer</h3>
+                            <p class="tech">Golang</p>
+                            <p class="date">GogoApps SA | 01.2022 – 05.2022</p>
+                            <ul>
+                                <li>Developed backend infrastructure for an investments' API platform</li>
+                                <li>Integrated external service providers for tax calculations</li>
+                                <li>Designed domain services</li>
+                            </ul>
+                        </div>
+                        <div class="experience-logo">
+                            <img src="gogoapps_logo.jpeg" alt="GogoApps logo">
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-content">
+                            <h3>Senior Software Developer</h3>
+                            <p class="tech">Golang, Node.js</p>
+                            <p class="date">Text SA (fka LiveChat SA) | 10.2019 – 12.2021</p>
+                            <ul>
+                                <li>Developed backend for LiveChat services</li>
+                                <li>Technical leader of messaging APIs (agent and customer side)</li>
+                                <li>Co-author and lead developer of Golang & JS SDKs for public API</li>
+                                <li>Participated in feature design and reviews</li>
+                            </ul>
+                        </div>
+                        <div class="experience-logo">
+                            <img src="livechat_logo.jpeg" alt="LiveChat logo">
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-content">
+                            <h3>Software Developer</h3>
+                            <p class="tech">C++, Node.js, Angular</p>
+                            <p class="date">Trapeze Poland | 02.2018 – 09.2019</p>
+                            <ul>
+                                <li>Developed UI for bus driver's terminal</li>
+                                <li>Designed and implemented in-house tools for UI configuration and testing</li>
+                                <li>Supported Solution Architect with design of node.js based projects</li>
+                            </ul>
+                        </div>
+                        <div class="experience-logo">
+                            <img src="trapeze_group_logo.jpeg" alt="Trapeze Group logo">
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-content">
+                            <h3>Technical Specialist / Software Developer</h3>
+                            <p class="tech">C++, Node.js</p>
+                            <p class="date">Nokia Solutions and Networks | 10.2014 – 01.2018</p>
+                            <ul>
+                                <li>Designed, proposed and reviewed features on project level</li>
+                                <li>Estimated feature efforts and arbitrated architectural disputes</li>
+                                <li>Supervised bug report analysis and corrections</li>
+                                <li>Developed embedded software for mobile networks equipment</li>
+                            </ul>
+                        </div>
+                        <div class="experience-logo">
+                            <img src="nokia_logo.jpeg" alt="Nokia logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag expert">Golang</span>
+                        <span class="skill-tag expert">REST API</span>
+                        <span class="skill-tag advanced">gRPC</span>
+                        <span class="skill-tag intermediate">C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag expert">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Infrastructure & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag advanced">AWS</span>
+                        <span class="skill-tag intermediate">Kubernetes</span>
+                        <span class="skill-tag intermediate">Docker</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag intermediate">Redis</span>
+                        <span class="skill-tag intermediate">PostgreSQL</span>
+                        <span class="skill-tag advanced">Queues</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Other</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag advanced">Git</span>
+                        <span class="skill-tag expert">Problem Solving</span>
+                        <span class="skill-tag advanced">Mentorship</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2025 <span>Krystian Ogierman</span>. This was vibecoded so no rights reserved xD
+        </footer>
+    </div>
+</body>
+</html> 
